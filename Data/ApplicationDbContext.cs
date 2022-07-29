@@ -12,6 +12,7 @@ namespace WebShopSeminar.Data
         }
 
         public DbSet<Address> Address { get; set; }
+        public DbSet<Product> Product { get; set; }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
 
     }
