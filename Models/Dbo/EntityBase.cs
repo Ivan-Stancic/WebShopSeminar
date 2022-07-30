@@ -1,6 +1,6 @@
 ﻿namespace WebShopSeminar.Models.Dbo
 {
-    public abstract class EntityBase
+    public interface IEntityBase
     {
         public int Id { get; set; }
         public DateTime Created { get; set; }

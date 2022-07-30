@@ -1,0 +1,32 @@
+﻿@using WebShopSeminar.Models.ViewModel
+@model List<ProductViewModel>
+@{
+    int counter = 1;
+}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Naziv</th>
+      <th scope="col">Opis</th>
+      <th scope="col">Cijena</th>
+      <th scope="col">Količina</th>
+    </tr>
+  </thead>
+  <tbody>
+      @foreach(var product in Model)
+      {
+        <tr>
+          <th scope="row">@counter</th>
+          <td>@product.Title</td>
+          <td>@product.Description</td>
+          <td>@product.Price</td>
+          <td>@product.Quantity</td>
+        </tr>
+        counter++;
+      }
+  </tbody>
+</table>
+
+<a class="btn btn-success" href="@Url.Action("AddProduct", "Admin")">Dodaj novi proizvod</a>

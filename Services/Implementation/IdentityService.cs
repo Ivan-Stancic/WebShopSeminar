@@ -27,15 +27,16 @@ namespace WebShopSeminar.Services.Implementation
                 {
                     Firstname = "Ivan",
                     Lastname = "Stančić",
-                    Email = "ivan@sova.hr",
-                    UserName = "Ivan",
+                    Email = "admin@admin.com",
+                    UserName = "admin@admin.com",
                     DOB = DateTime.Now.AddYears(-35),
+                    PhoneNumber = "+38511234567",
                     Address = new List<Address>
                     {
                         new Address
                         {
-                            City = "Zagreb Grad",
-                            Street = "Maximirska",
+                            City = "Zagreb",
+                            Street = "Maximirska"
                         }
                     }
                 }, "Pa$$w0rd", Roles.Admin).Wait();
