@@ -12,12 +12,62 @@ namespace WebShopSeminar.Data
         {
         }
 
+        public override int SaveChanges()
+        {
+
+            var entries = ChangeTracker
+                        .Entries()
+                        .Where(e => e.Entity is IEntityBase && (
+                          e.State == EntityState.Added
+                          || e.State == EntityState.Modified));
+
+            foreach (var entityEntry in entries)
+            {
+                switch (entityEntry.State)
+                {
+                    case EntityState.Added:
+                        ((IEntityBase)entityEntry.Entity).Created = DateTime.Now;
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+            return base.SaveChanges();
+
+        }
+
+        public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
+        {
+
+            var entries = ChangeTracker
+            .Entries()
+            .Where(e => e.Entity is IEntityBase && (
+              e.State == EntityState.Added
+              || e.State == EntityState.Modified));
+
+            foreach (var entityEntry in entries)
+            {
+                switch (entityEntry.State)
+                {
+                    case EntityState.Added:
+                        ((IEntityBase)entityEntry.Entity).Created = DateTime.Now;
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+
+            return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+        }
+
         public DbSet<Address> Address { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
         public DbSet<WebShopSeminar.Models.ViewModel.ProductViewModel>? ProductViewModel { get; set; }
         public DbSet<ProductCategory> ProductCategory { get; set; }
-
-
+        public DbSet<ShoppingChart> ShoppingChart { get; set; }
+        public DbSet<ShoppingChartItem> ShoppingChartItem { get; set; }
     }
 }

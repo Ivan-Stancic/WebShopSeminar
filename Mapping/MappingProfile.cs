@@ -11,10 +11,11 @@ namespace WebShopSeminar.Mapping
         {
             CreateMap<ProductBinding, Product>();
             CreateMap<Product, ProductViewModel>();
-
             CreateMap<ProductCategoryBinding, ProductCategory>();
             CreateMap<ProductCategoryUpdateBinding, ProductCategory>();
             CreateMap<ProductCategory, ProductCategoryViewModel>();
+            CreateMap<ShoppingChartItemBinding, ShoppingChartItem>();
+            CreateMap<ShoppingChartItem, ShoppingChartItemViewModel>();
         }
     }
 }

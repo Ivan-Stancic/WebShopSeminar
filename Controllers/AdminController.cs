@@ -33,5 +33,18 @@ namespace WebShopSeminar.Controllers
             var products = await productService.AddProductAsync(model);
             return RedirectToAction("ProdcutAdministration");
         }
+
+        [HttpGet]
+        public async Task<IActionResult> AddProductCategory()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddProductCategory(ProductCategoryBinding model)
+        {
+            var products = await productService.AddProductCategoryAsync(model);
+            return RedirectToAction("ProdcutAdministration");
+        }
     }
 }

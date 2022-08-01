@@ -8,5 +8,6 @@ namespace WebShopSeminar.Models.Dbo
         public string Lastname { get; set; }
         public DateTime DOB { get; set; }
         public ICollection<Address> Address { get; set; }
+        public ICollection<ShoppingChart> ShoppingChart { get; set; }
     }
 }

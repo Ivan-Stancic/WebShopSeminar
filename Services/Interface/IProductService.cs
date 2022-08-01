@@ -8,5 +8,9 @@ namespace WebShopSeminar.Services.Interface
         Task<ProductViewModel> AddProductAsync(ProductBinding model);
         Task<ProductViewModel> GetProductAsync(int id);
         Task<List<ProductViewModel>> GetProductsAsync();
+        Task<ProductCategoryViewModel> AddProductCategoryAsync(ProductCategoryBinding model);
+        Task<ProductCategoryViewModel> GetProductCategoryAsync(int id);
+        Task<List<ProductCategoryViewModel>> GetProductCategorysAsync();
+        Task<ProductCategoryViewModel> UpdateProductCategoryAsync(ProductCategoryUpdateBinding model);
     }
 }
