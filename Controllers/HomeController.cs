@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebShopSeminar.Models;
+using WebShopSeminar.Models.Binding;
 using WebShopSeminar.Services.Interface;
 
 namespace WebShopSeminar.Controllers
@@ -23,10 +24,19 @@ namespace WebShopSeminar.Controllers
             return View(productService.GetProductsAsync().Result);
         }
 
+        [Authorize]
         public async Task<IActionResult> ItemView(int id)
         {
             var product = await productService.GetProductAsync(id);
             return View(product);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> ItemView(ShoppingCartBinding model)
+        {
+            var product = await productService.AddShoppingCartAsync(model);
+            return RedirectToAction("Index");
         }
 
         public IActionResult Privacy()

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebShopSeminar.Models.Base
 {
-    public class ShoppingChartItemBase
+    public class ShoppingCartItemBase
     {
         [Required]
         [Column(TypeName = "decimal(9, 2)")]

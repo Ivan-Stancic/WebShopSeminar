@@ -2,7 +2,7 @@
 
 namespace WebShopSeminar.Models.Binding
 {
-    public class ShoppingChartItemBinding : ShoppingChartItemBase
+    public class ShoppingCartItemBinding : ShoppingCartItemBase
     {
     }
 }

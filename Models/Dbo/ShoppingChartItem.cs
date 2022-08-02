@@ -2,7 +2,7 @@
 
 namespace WebShopSeminar.Models.Dbo
 {
-    public class ShoppingChartItem : ShoppingChartItemBase, IEntityBase
+    public class ShoppingCartItem : ShoppingCartItemBase, IEntityBase
     {
         public int Id { get; set; }
         public DateTime Created { get; set; }

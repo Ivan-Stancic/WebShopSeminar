@@ -12,8 +12,8 @@ using WebShopSeminar.Data;
 namespace WebShopSeminar.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220801193017_shoppingChartItemMigration")]
-    partial class shoppingChartItemMigration
+    [Migration("20220801193017_shoppingCartItemMigration")]
+    partial class shoppingCartItemMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -326,7 +326,7 @@ namespace WebShopSeminar.Data.Migrations
                     b.ToTable("ProductCategory");
                 });
 
-            modelBuilder.Entity("WebShopSeminar.Models.Dbo.ShoppingChart", b =>
+            modelBuilder.Entity("WebShopSeminar.Models.Dbo.ShoppingCart", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -344,10 +344,10 @@ namespace WebShopSeminar.Data.Migrations
 
                     b.HasIndex("ApplicationUserId");
 
-                    b.ToTable("ShoppingChart");
+                    b.ToTable("ShoppingCart");
                 });
 
-            modelBuilder.Entity("WebShopSeminar.Models.Dbo.ShoppingChartItem", b =>
+            modelBuilder.Entity("WebShopSeminar.Models.Dbo.ShoppingCartItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -367,16 +367,16 @@ namespace WebShopSeminar.Data.Migrations
                     b.Property<decimal>("Quantity")
                         .HasColumnType("decimal(9,2)");
 
-                    b.Property<int?>("ShoppingChartId")
+                    b.Property<int?>("ShoppingCartId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
 
-                    b.HasIndex("ShoppingChartId");
+                    b.HasIndex("ShoppingCartId");
 
-                    b.ToTable("ShoppingChartItem");
+                    b.ToTable("ShoppingCartItem");
                 });
 
             modelBuilder.Entity("WebShopSeminar.Models.ViewModel.ProductCategoryViewModel", b =>
@@ -504,14 +504,14 @@ namespace WebShopSeminar.Data.Migrations
                     b.Navigation("ProductCategory");
                 });
 
-            modelBuilder.Entity("WebShopSeminar.Models.Dbo.ShoppingChart", b =>
+            modelBuilder.Entity("WebShopSeminar.Models.Dbo.ShoppingCart", b =>
                 {
                     b.HasOne("WebShopSeminar.Models.Dbo.ApplicationUser", null)
-                        .WithMany("ShoppingChart")
+                        .WithMany("ShoppingCart")
                         .HasForeignKey("ApplicationUserId");
                 });
 
-            modelBuilder.Entity("WebShopSeminar.Models.Dbo.ShoppingChartItem", b =>
+            modelBuilder.Entity("WebShopSeminar.Models.Dbo.ShoppingCartItem", b =>
                 {
                     b.HasOne("WebShopSeminar.Models.Dbo.Product", "Product")
                         .WithMany()
@@ -519,9 +519,9 @@ namespace WebShopSeminar.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebShopSeminar.Models.Dbo.ShoppingChart", null)
-                        .WithMany("ShoppingChartItems")
-                        .HasForeignKey("ShoppingChartId");
+                    b.HasOne("WebShopSeminar.Models.Dbo.ShoppingCart", null)
+                        .WithMany("ShoppingCartItems")
+                        .HasForeignKey("ShoppingCartId");
 
                     b.Navigation("Product");
                 });
@@ -541,12 +541,12 @@ namespace WebShopSeminar.Data.Migrations
                 {
                     b.Navigation("Address");
 
-                    b.Navigation("ShoppingChart");
+                    b.Navigation("ShoppingCart");
                 });
 
-            modelBuilder.Entity("WebShopSeminar.Models.Dbo.ShoppingChart", b =>
+            modelBuilder.Entity("WebShopSeminar.Models.Dbo.ShoppingCart", b =>
                 {
-                    b.Navigation("ShoppingChartItems");
+                    b.Navigation("ShoppingCartItems");
                 });
 #pragma warning restore 612, 618
         }

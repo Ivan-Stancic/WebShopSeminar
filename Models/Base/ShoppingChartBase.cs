@@ -1,6 +1,6 @@
 ﻿namespace WebShopSeminar.Models.Base
 {
-    public class ShoppingChartBase
+    public class ShoppingCartBase
     {
 
     }

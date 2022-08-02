@@ -2,7 +2,7 @@
 
 namespace WebShopSeminar.Models.ViewModel
 {
-    public class ShoppingChartItemViewModel : ShoppingChartItemBase
+    public class ShoppingCartItemViewModel : ShoppingCartItemBase
     {
     }
 }

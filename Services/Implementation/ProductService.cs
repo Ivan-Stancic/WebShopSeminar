@@ -19,6 +19,32 @@ namespace WebShopSeminar.Services.Implementation
             this.mapper = mapper;
         }
 
+        //Dodavanje nove košare
+        public async Task<ShoppingCartViewModel> AddShoppingCartAsync(ShoppingCartBinding model)
+        {
+            var product = await db.Product.FindAsync(model.ProductId);
+            var user = await db.Users.FirstOrDefaultAsync(x => x.Id == model.UserId);
+            if(product == null || user == null)
+            {
+                return null;
+            }
+            var shoppingCartItem = new ShoppingCartItem
+            {
+                Price = model.Price,
+                Product = product,
+                Quantity = model.Quantity
+            };
+            var dbo = new ShoppingCart
+            {
+                ShoppingCartItems = new List<ShoppingCartItem> { shoppingCartItem },
+                ApplicationUser = user
+            };
+
+            db.ShoppingCart.Add(dbo);
+            await db.SaveChangesAsync();
+            return  mapper.Map<ShoppingCartViewModel>(dbo);
+        }
+
         //Dodavanje poizvoda
         public async Task<ProductViewModel> AddProductAsync(ProductBinding model)
         {
@@ -83,26 +109,26 @@ namespace WebShopSeminar.Services.Implementation
         }
 
         //Dodavanje predmeta u košaricu
-        public async Task<ShoppingChartItemViewModel> AddShoppingChartItemAsync(ShoppingChartItemBinding model)
+        public async Task<ShoppingCartItemViewModel> AddShoppingCartItemAsync(ShoppingCartItemBinding model)
         {
-            var dbo = mapper.Map<ShoppingChartItem>(model);
-            db.ShoppingChartItem.Add(dbo);
+            var dbo = mapper.Map<ShoppingCartItem>(model);
+            db.ShoppingCartItem.Add(dbo);
             await db.SaveChangesAsync();
-            return mapper.Map<ShoppingChartItemViewModel>(dbo);
+            return mapper.Map<ShoppingCartItemViewModel>(dbo);
         }
 
         //Dohvat proizvoda iz košare
-        public async Task<ShoppingChartItemViewModel> GetShoppingChartItemAsync(int id)
+        public async Task<ShoppingCartItemViewModel> GetShoppingCartItemAsync(int id)
         {
-            var dbo = await db.ShoppingChartItem.FindAsync(id);
-            return mapper.Map<ShoppingChartItemViewModel>(dbo);
+            var dbo = await db.ShoppingCartItem.FindAsync(id);
+            return mapper.Map<ShoppingCartItemViewModel>(dbo);
         }
 
         //Dohvat svih proizvoda iz košare
-        public async Task<List<ShoppingChartItemViewModel>> GetShoppingChartItemsAsync()
+        public async Task<List<ShoppingCartItemViewModel>> GetShoppingCartItemsAsync()
         {
-            var dbo = await db.ShoppingChartItem.ToListAsync();
-            return dbo.Select(x => mapper.Map<ShoppingChartItemViewModel>(x)).ToList();
+            var dbo = await db.ShoppingCartItem.ToListAsync();
+            return dbo.Select(x => mapper.Map<ShoppingCartItemViewModel>(x)).ToList();
         }
     }
 }

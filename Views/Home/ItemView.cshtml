@@ -1,10 +1,19 @@
 ﻿@model WebShopSeminar.Models.ViewModel.ProductViewModel
-
+@using Microsoft.AspNetCore.Identity
+@using WebShopSeminar.Models.Dbo
+@inject UserManager<ApplicationUser> UserManager
+@{
+       var user = await UserManager.GetUserAsync(User);
+}
 @{
     ViewData["Title"] = "Proizvod";
 }
 
-<h1>Proizvod</h1>
+@using(Html.BeginForm())
+{
+    <h1>Proizvod</h1>
+    <input type="text" readonly hidden value="@user.Id" name="UserId"/>
+    <input type="text" readonly hidden value="@Model.Id" name="ProductId"/>
 
 <div>
     <h4>Detalji</h4>
@@ -22,23 +31,24 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Description)
         </dd>
-        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Price)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
+            @Html.TextBoxFor(model => model.Price, new {@readonly = true, @class = "form-control readonly"})
         </dd>
          <dt class = "col-sm-2">
             Kategorija
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.ProductCategory.Title)
+        </dd>
+
         <dt class = "col-sm-2">
             Dodaj količinu
         </dt>
         <dd class = "col-sm-10">
-            <select name="ProductCategoryId" class="form-select" aria-label="Default select example">
+            <select name="Quantity" class="form-select" aria-label="Default select example">
                 @for(int i = 1; i <= Model.Quantity; i++)
                 {
                     <option value="@i">@i</option>
@@ -46,5 +56,7 @@
         </select>
         </dd>
     </dl>
+    <input type="submit" value="Pošalji" class="btn btn-success">
 </div>
+}
 

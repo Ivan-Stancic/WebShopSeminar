@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebShopSeminar.Data.Migrations
 {
-    public partial class shoppingChartItemMigration : Migration
+    public partial class shoppingCartItemMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,7 +17,7 @@ namespace WebShopSeminar.Data.Migrations
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
 
             migrationBuilder.CreateTable(
-                name: "ShoppingChart",
+                name: "ShoppingCart",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -27,65 +27,65 @@ namespace WebShopSeminar.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ShoppingChart", x => x.Id);
+                    table.PrimaryKey("PK_ShoppingCart", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ShoppingChart_AspNetUsers_ApplicationUserId",
+                        name: "FK_ShoppingCart_AspNetUsers_ApplicationUserId",
                         column: x => x.ApplicationUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "ShoppingChartItem",
+                name: "ShoppingCartItem",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false),
-                    ShoppingChartId = table.Column<int>(type: "int", nullable: true),
+                    ShoppingCartId = table.Column<int>(type: "int", nullable: true),
                     Quantity = table.Column<decimal>(type: "decimal(9,2)", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(9,2)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ShoppingChartItem", x => x.Id);
+                    table.PrimaryKey("PK_ShoppingCartItem", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ShoppingChartItem_Product_ProductId",
+                        name: "FK_ShoppingCartItem_Product_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Product",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ShoppingChartItem_ShoppingChart_ShoppingChartId",
-                        column: x => x.ShoppingChartId,
-                        principalTable: "ShoppingChart",
+                        name: "FK_ShoppingCartItem_ShoppingCart_ShoppingCartId",
+                        column: x => x.ShoppingCartId,
+                        principalTable: "ShoppingCart",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ShoppingChart_ApplicationUserId",
-                table: "ShoppingChart",
+                name: "IX_ShoppingCart_ApplicationUserId",
+                table: "ShoppingCart",
                 column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ShoppingChartItem_ProductId",
-                table: "ShoppingChartItem",
+                name: "IX_ShoppingCartItem_ProductId",
+                table: "ShoppingCartItem",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ShoppingChartItem_ShoppingChartId",
-                table: "ShoppingChartItem",
-                column: "ShoppingChartId");
+                name: "IX_ShoppingCartItem_ShoppingCartId",
+                table: "ShoppingCartItem",
+                column: "ShoppingCartId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ShoppingChartItem");
+                name: "ShoppingCartItem");
 
             migrationBuilder.DropTable(
-                name: "ShoppingChart");
+                name: "ShoppingCart");
 
             migrationBuilder.DropColumn(
                 name: "Created",

@@ -14,8 +14,9 @@ namespace WebShopSeminar.Mapping
             CreateMap<ProductCategoryBinding, ProductCategory>();
             CreateMap<ProductCategoryUpdateBinding, ProductCategory>();
             CreateMap<ProductCategory, ProductCategoryViewModel>();
-            CreateMap<ShoppingChartItemBinding, ShoppingChartItem>();
-            CreateMap<ShoppingChartItem, ShoppingChartItemViewModel>();
+            CreateMap<ShoppingCartItemBinding, ShoppingCartItem>();
+            CreateMap<ShoppingCartItem, ShoppingCartItemViewModel>();
+            CreateMap<ShoppingCart, ShoppingCartViewModel>();
         }
     }
 }
