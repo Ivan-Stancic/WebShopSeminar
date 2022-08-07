@@ -16,7 +16,10 @@
         @if(userRoles[0] == Roles.Admin)
             {
                 <li class="nav-item">
-                    <a class="nav-link text-dark"  href="@Url.Action("ProdcutAdministration", "Admin")">Administracija proizvoda</a>
+                    <a class="nav-link text-dark"  href="@Url.Action("ProductAdministration", "Admin")">Proizvodi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark"  href="@Url.Action("ProductCategoryAdministration", "Admin")">Kategorije</a>
                 </li>
             }
         <li class="nav-item">

@@ -12,19 +12,33 @@
       <th scope="col">Opis</th>
       <th scope="col">Cijena</th>
       <th scope="col">Detalji</th>
+      <th scope="col">Slika proizvoda</th>
     </tr>
   </thead>
   <tbody>
-      @foreach(var product in Model)
-      {
-        <tr>
-          <th scope="row">@counter</th>
-          <td>@product.Title</td>
-          <td>@product.Description</td>
-          <td>@product.Price</td>
-          <td><a href="@Url.Action("ItemView", "Home",new {id = product.Id})" class="btn btn-success">Detalji</a></td>
-        </tr>
-        counter++;
-      }
+      @foreach (var product in Model.OrderBy(x => Guid.NewGuid()).Take(10))
+        {
+            <tr>
+                <th scope="row">@counter</th>
+                <td>@product.Title</td>
+                <td>@product.Description</td>
+                <td>@product.Price</td>
+                <td>
+                    @if (product.Quantity > 0)
+                    {
+                        <a href="@Url.Action("ItemView", "Home",new {id = product.Id})" class="btn btn-success">Detalji</a>
+                    }
+                    else
+                    {
+                        <span>Proizvod nije dostupan</span>
+                    }
+                </td>
+                <td>
+                    <img src="@product.ProductImgUrl" alt="Tu ide slika">
+                </td>
+
+            </tr>
+            counter++;
+        }
   </tbody>
 </table

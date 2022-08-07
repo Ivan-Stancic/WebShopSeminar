@@ -11,12 +11,23 @@ namespace WebShopSeminar.Mapping
         {
             CreateMap<ProductBinding, Product>();
             CreateMap<Product, ProductViewModel>();
+            CreateMap<ProductUpdateBinding, Product>();
+            CreateMap<ProductViewModel, ProductUpdateBinding>();
+            CreateMap<ProductViewModel, Product>();
+
             CreateMap<ProductCategoryBinding, ProductCategory>();
             CreateMap<ProductCategoryUpdateBinding, ProductCategory>();
             CreateMap<ProductCategory, ProductCategoryViewModel>();
+            CreateMap<ProductCategoryViewModel, ProductCategory>();
+
             CreateMap<ShoppingCartItemBinding, ShoppingCartItem>();
             CreateMap<ShoppingCartItem, ShoppingCartItemViewModel>();
             CreateMap<ShoppingCart, ShoppingCartViewModel>();
+
+            CreateMap<FileStorage, FileStorageViewModel>();
+            CreateMap<FileStorage, FileStorageExpendedViewModel>();
+            CreateMap<FileStorageViewModel, FileStorage>().
+                ForMember(dst => dst.Id, opts => opts.Ignore());
         }
     }
 }

@@ -22,6 +22,8 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddSingleton<IIdentityService, IdentityService>();
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IFileStorageService, FileStorageService>();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 var app = builder.Build();
 

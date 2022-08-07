@@ -12,6 +12,9 @@
       <th scope="col">Opis</th>
       <th scope="col">Cijena</th>
       <th scope="col">Količina</th>
+      <th scope="col">Detalji</th>
+      <th scope="col">Uredi</th>
+      <th scope="col">Obriši</th>
     </tr>
   </thead>
   <tbody>
@@ -23,6 +26,10 @@
           <td>@product.Description</td>
           <td>@product.Price</td>
           <td>@product.Quantity</td>
+          <td><a href="@Url.Action("ItemView", "Home",new {id = product.Id})" class="btn btn-info">Detalji</a></td>
+          <td>@Html.ActionLink("Uredi", "UpdateProduct", "Admin", new {id = product.Id}, new{@class = "btn btn-primary"})</td>
+          <td>@Html.ActionLink("Obriši", "DeleteProduct", "Admin", new {id = product.Id}, new{@class = "btn btn-danger"})</td>
+
         </tr>
         counter++;
       }

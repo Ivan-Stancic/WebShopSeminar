@@ -24,6 +24,11 @@ namespace WebShopSeminar.Controllers
             return View(productService.GetProductsAsync().Result);
         }
 
+        public IActionResult Category()
+        {
+            return View(productService.GetProductCategorysAsync().Result);
+        }
+
         [Authorize]
         public async Task<IActionResult> ItemView(int id)
         {

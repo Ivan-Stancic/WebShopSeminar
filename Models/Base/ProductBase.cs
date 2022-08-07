@@ -19,5 +19,7 @@ namespace WebShopSeminar.Models.Base
         [Column(TypeName = "decimal(9, 2)")]
         [Display(Name = "Cijena")]
         public decimal Price { get; set; }
+        public string? ProductImgUrl { get; set; }
+
     }
 }

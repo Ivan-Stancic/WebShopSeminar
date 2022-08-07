@@ -12,11 +12,13 @@ namespace WebShopSeminar.Services.Implementation
     {
         private readonly ApplicationDbContext db;
         private readonly IMapper mapper;
+        private readonly IFileStorageService fileStorageService;
 
         public ProductService(ApplicationDbContext db, IMapper mapper)
         {
             this.db = db;
             this.mapper = mapper;
+            this.fileStorageService = fileStorageService;
         }
 
         //Dodavanje nove košare
@@ -52,7 +54,11 @@ namespace WebShopSeminar.Services.Implementation
             var productCategory = await db.ProductCategory.FindAsync(model.ProductCategoryId);
             if(productCategory == null)
             {
-                return null;
+                var fileResponse = await fileStorageService.AddFileToStorage(model.ProductImg);
+                if (fileResponse != null)
+                {
+                    dbo.ProductImgUrl = fileResponse.DownloadUrl;
+                }
             }
             dbo.ProductCategory = productCategory;
             db.Product.Add(dbo);
@@ -67,6 +73,24 @@ namespace WebShopSeminar.Services.Implementation
                 .Include(x=>x.ProductCategory)
                 .FirstOrDefaultAsync(x=>x.Id == id);
             return mapper.Map<ProductViewModel>(dbo);
+        }
+
+        //Edit produkta
+        public async Task<ProductViewModel> UpdateProductAsync(ProductUpdateBinding model)
+        {
+            var category = await db.ProductCategory.FirstOrDefaultAsync(x => x.Id == model.ProductCategoryId);
+            var dbo = await db.Product.FindAsync(model.Id);
+            mapper.Map(model, dbo);
+            dbo.ProductCategory = category;
+            await db.SaveChangesAsync();
+            return mapper.Map<ProductViewModel>(dbo);
+        }
+
+        public async Task DeleteProductAsync(Product model)
+        {
+            var product = await db.Product.FirstOrDefaultAsync(x => x.Id == model.Id);
+            db.Product.Remove(product);
+            await db.SaveChangesAsync();
         }
 
         //Dohvat svih proizvoda

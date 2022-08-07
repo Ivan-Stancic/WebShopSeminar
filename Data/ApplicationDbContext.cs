@@ -65,9 +65,10 @@ namespace WebShopSeminar.Data
         public DbSet<Address> Address { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
-        public DbSet<WebShopSeminar.Models.ViewModel.ProductViewModel>? ProductViewModel { get; set; }
+        public DbSet<ProductViewModel>? ProductViewModel { get; set; }
         public DbSet<ProductCategory> ProductCategory { get; set; }
         public DbSet<ShoppingCart> ShoppingCart { get; set; }
         public DbSet<ShoppingCartItem> ShoppingCartItem { get; set; }
+        public DbSet<FileStorage> FileStorage { get; set; }
     }
 }
