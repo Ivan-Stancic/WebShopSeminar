@@ -14,7 +14,7 @@ namespace WebShopSeminar.Services.Implementation
         private readonly IMapper mapper;
         private readonly IFileStorageService fileStorageService;
 
-        public ProductService(ApplicationDbContext db, IMapper mapper)
+        public ProductService(ApplicationDbContext db, IMapper mapper, IFileStorageService fileStorageService)
         {
             this.db = db;
             this.mapper = mapper;
@@ -51,14 +51,12 @@ namespace WebShopSeminar.Services.Implementation
         public async Task<ProductViewModel> AddProductAsync(ProductBinding model)
         {
             var dbo = mapper.Map<Product>(model);
+            var fileResponse = await fileStorageService.AddFileToStorage(model.ProductImg);
+            dbo.ProductImgUrl = fileResponse.DownloadUrl;
             var productCategory = await db.ProductCategory.FindAsync(model.ProductCategoryId);
             if(productCategory == null)
             {
-                var fileResponse = await fileStorageService.AddFileToStorage(model.ProductImg);
-                if (fileResponse != null)
-                {
-                    dbo.ProductImgUrl = fileResponse.DownloadUrl;
-                }
+                return null;
             }
             dbo.ProductCategory = productCategory;
             db.Product.Add(dbo);
@@ -81,6 +79,8 @@ namespace WebShopSeminar.Services.Implementation
             var category = await db.ProductCategory.FirstOrDefaultAsync(x => x.Id == model.ProductCategoryId);
             var dbo = await db.Product.FindAsync(model.Id);
             mapper.Map(model, dbo);
+            var fileResponse = await fileStorageService.AddFileToStorage(model.ProductImg);
+            dbo.ProductImgUrl = fileResponse.DownloadUrl;
             dbo.ProductCategory = category;
             await db.SaveChangesAsync();
             return mapper.Map<ProductViewModel>(dbo);
