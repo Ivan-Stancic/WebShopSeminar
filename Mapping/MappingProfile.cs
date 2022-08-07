@@ -14,6 +14,7 @@ namespace WebShopSeminar.Mapping
             CreateMap<ProductUpdateBinding, Product>();
             CreateMap<ProductViewModel, ProductUpdateBinding>();
             CreateMap<ProductViewModel, Product>();
+            CreateMap<ProductUpdateBinding, ProductViewModel>();
 
             CreateMap<ProductCategoryBinding, ProductCategory>();
             CreateMap<ProductCategoryUpdateBinding, ProductCategory>();

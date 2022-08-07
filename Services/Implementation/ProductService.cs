@@ -56,7 +56,7 @@ namespace WebShopSeminar.Services.Implementation
             var productCategory = await db.ProductCategory.FindAsync(model.ProductCategoryId);
             if(productCategory == null)
             {
-                return null;
+               return null;
             }
             dbo.ProductCategory = productCategory;
             db.Product.Add(dbo);
@@ -76,12 +76,21 @@ namespace WebShopSeminar.Services.Implementation
         //Edit produkta
         public async Task<ProductViewModel> UpdateProductAsync(ProductUpdateBinding model)
         {
-            var category = await db.ProductCategory.FirstOrDefaultAsync(x => x.Id == model.ProductCategoryId);
-            var dbo = await db.Product.FindAsync(model.Id);
-            mapper.Map(model, dbo);
-            var fileResponse = await fileStorageService.AddFileToStorage(model.ProductImg);
-            dbo.ProductImgUrl = fileResponse.DownloadUrl;
-            dbo.ProductCategory = category;
+            var productCategory = await db.ProductCategory.FirstOrDefaultAsync(x => x.Id == model.ProductCategoryId);
+            var dbo = await db.Product.FirstOrDefaultAsync(x => x.Id == model.Id);
+            if (model.ProductImg != null)
+            {
+                var fileResponse = await fileStorageService.AddFileToStorage(model.ProductImg);
+                if (fileResponse.FileName != null)
+                {
+                    dbo.ProductImgUrl = fileResponse.DownloadUrl;
+                }
+            }
+            dbo.Title = model.Title ?? dbo.Title;
+            dbo.Description = model.Description ?? dbo.Description;
+            dbo.Quantity = model.Quantity;
+            dbo.Price = model.Price;
+            dbo.ProductCategory = productCategory;
             await db.SaveChangesAsync();
             return mapper.Map<ProductViewModel>(dbo);
         }
