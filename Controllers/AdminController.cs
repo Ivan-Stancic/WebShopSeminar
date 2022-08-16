@@ -83,6 +83,38 @@ namespace WebShopSeminar.Controllers
             return RedirectToAction("ProductAdministration");
         }
 
+        public async Task<IActionResult> UpdateProductCategory(int id)
+        {
+            var productCategory = await productService.GetProductCategoryAsync(id);
+            var model = mapper.Map<ProductCategoryUpdateBinding>(productCategory);
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateProductCategory(ProductCategoryUpdateBinding model)
+        {
+            var productCategory = await productService.UpdateProductCategoryAsync(model);
+            return RedirectToAction("ProductCategoryAdministration");
+        }
+
+        public async Task<IActionResult> DeleteProductCategory(int id)
+        {
+            var product = await productService.GetProductCategoryAsync(id);
+            var model = mapper.Map<ProductCategory>(product);
+            return View(model);
+        }
+
+        [HttpPost, ActionName("DeleteProductCategory")]
+        public async Task<IActionResult> DeleteProductCategoryConfirmed(int id)
+        {
+            var product = await productService.GetProductCategoryAsync(id);
+            var model = mapper.Map<ProductCategory>(product);
+
+            await productService.DeleteProductCategoryAsync(model);
+
+            return RedirectToAction("ProductCategoryAdministration");
+        }
+
         public async Task<IActionResult> ProductCategoryAdministration()
         {
             var products = await productService.GetProductCategorysAsync();

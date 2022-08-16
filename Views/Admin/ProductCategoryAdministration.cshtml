@@ -21,8 +21,8 @@
           <th scope="row">@counter</th>
           <td>@product.Title</td>
           <td>@product.Description</td>
-          <td>@Html.ActionLink("Uredi", "UpdateiProduct", "Admin", new {id = product.Id}, new{@class = "btn btn-primary"})</td>
-          <td>@Html.ActionLink("Obriši", "DeleteiProduct", "Admin", new {id = product.Id}, new{@class = "btn btn-danger"})</td>
+          <td>@Html.ActionLink("Uredi", "UpdateProductCategory", "Admin", new {id = product.Id}, new{@class = "btn btn-primary"})</td>
+          <td>@Html.ActionLink("Obriši", "DeleteProductCategory", "Admin", new {id = product.Id}, new{@class = "btn btn-danger"})</td>
 
         </tr>
         counter++;

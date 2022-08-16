@@ -141,6 +141,14 @@ namespace WebShopSeminar.Services.Implementation
             return mapper.Map<ProductCategoryViewModel>(dbo);
         }
 
+        //Brisanje kategorije
+        public async Task DeleteProductCategoryAsync(ProductCategory model)
+        {
+            var dbo = await db.ProductCategory.FindAsync(model.Id);
+            db.ProductCategory.Remove(dbo);
+            await db.SaveChangesAsync();
+        }
+
         //Dodavanje predmeta u košaricu
         public async Task<ShoppingCartItemViewModel> AddShoppingCartItemAsync(ShoppingCartItemBinding model)
         {

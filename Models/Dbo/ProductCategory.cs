@@ -6,5 +6,7 @@ namespace WebShopSeminar.Models.Dbo
     {
         public int Id { get; set; }
         public DateTime Created { get; set; }
+        public int ProductId { get; set; }
+        public ICollection<Product> Product { get; set; }
     }
 }
