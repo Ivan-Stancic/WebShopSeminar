@@ -9,5 +9,7 @@ namespace WebShopSeminar.Models.Dbo
         public DateTime DOB { get; set; }
         public ICollection<Address> Address { get; set; }
         public ICollection<ShoppingCart> ShoppingCart { get; set; }
+        public string Password { get; set; }
+
     }
 }

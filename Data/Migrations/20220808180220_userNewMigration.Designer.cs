@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebShopSeminar.Data;
 
@@ -11,9 +12,10 @@ using WebShopSeminar.Data;
 namespace WebShopSeminar.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220808180220_userNewMigration")]
+    partial class userNewMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -350,9 +352,6 @@ namespace WebShopSeminar.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -536,7 +535,7 @@ namespace WebShopSeminar.Data.Migrations
             modelBuilder.Entity("WebShopSeminar.Models.Dbo.Product", b =>
                 {
                     b.HasOne("WebShopSeminar.Models.Dbo.ProductCategory", "ProductCategory")
-                        .WithMany("Product")
+                        .WithMany()
                         .HasForeignKey("ProductCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -586,11 +585,6 @@ namespace WebShopSeminar.Data.Migrations
                     b.Navigation("Address");
 
                     b.Navigation("ShoppingCart");
-                });
-
-            modelBuilder.Entity("WebShopSeminar.Models.Dbo.ProductCategory", b =>
-                {
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("WebShopSeminar.Models.Dbo.ShoppingCart", b =>
