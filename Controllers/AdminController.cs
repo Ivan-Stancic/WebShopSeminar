@@ -12,13 +12,15 @@ namespace WebShopSeminar.Controllers
     [Authorize(Roles = Roles.Admin)]
     public class AdminController : Controller
     {
+        private readonly IUserService userService;
         private readonly IProductService productService;
         private readonly IMapper mapper;
 
-        public AdminController(IProductService productService, IMapper mapper)
+        public AdminController(IProductService productService, IMapper mapper, IUserService userService)
         {
             this.productService = productService;
             this.mapper = mapper;
+            this.userService = userService;
         }
 
         public async Task<IActionResult> ProductAdministration()
@@ -119,6 +121,13 @@ namespace WebShopSeminar.Controllers
         {
             var products = await productService.GetProductCategorysAsync();
             return View(products);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> UserAdministration(int id)
+        {
+            var users = await userService.GetUsers();
+            return View(users);
         }
     }
 }

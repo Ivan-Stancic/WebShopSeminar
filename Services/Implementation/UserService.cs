@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using WebShopSeminar.Data;
 using WebShopSeminar.Models.Binding;
 using WebShopSeminar.Models.Dbo;
+using WebShopSeminar.Models.ViewModel;
 using WebShopSeminar.Services.Interface;
 
 namespace WebShopSeminar.Services.Implementation
@@ -11,12 +14,14 @@ namespace WebShopSeminar.Services.Implementation
         private readonly UserManager<ApplicationUser> userManager;
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly IMapper mapper;
+        private readonly ApplicationDbContext db;
 
-        public UserService(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IMapper mapper)
+        public UserService(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IMapper mapper, ApplicationDbContext db)
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
             this.mapper = mapper;
+            this.db = db;
         }
 
         public async Task<ApplicationUser?> CreateUserAsync(UserBinding model, string role)
@@ -37,6 +42,29 @@ namespace WebShopSeminar.Services.Implementation
                 }
             }
             return user;
+        }
+
+        public async Task<List<ApplicationUserViewModel>> GetUsers()
+        {
+            var dboUsers = await db.Users
+                .Include(x => x.Address)
+                .ToListAsync();
+            var response = dboUsers.Select(x => mapper.Map<ApplicationUserViewModel>(x)).ToList();
+            response.ForEach(x => x.Role = GetUserRole(x.Id).Result);
+            return response;
+
+        }
+
+        public async Task<string> GetUserRole(string id)
+        {
+            var dboUser = await db.Users.FindAsync(id);
+            if (dboUser == null)
+            {
+                return String.Empty;
+            }
+            var roles = await userManager.GetRolesAsync(dboUser);
+            return roles.First();
+
         }
     }
 }

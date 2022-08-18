@@ -31,6 +31,7 @@ namespace WebShopSeminar.Mapping
             CreateMap<FileStorageViewModel, FileStorage>().
                 ForMember(dst => dst.Id, opts => opts.Ignore());
 
+            CreateMap<ApplicationUser, ApplicationUserViewModel>();
             CreateMap<UserBinding, ApplicationUser>()
                 .ForMember(dst => dst.UserName, opts => opts.MapFrom(src => src.Email));
 

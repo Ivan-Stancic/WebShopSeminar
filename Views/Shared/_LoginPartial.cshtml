@@ -21,6 +21,9 @@
                 <li class="nav-item">
                     <a class="nav-link text-dark"  href="@Url.Action("ProductCategoryAdministration", "Admin")">Kategorije</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark"  href="@Url.Action("UserAdministration", "Admin")">Korisnici</a>
+                </li>
             }
         <li class="nav-item">
             <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
