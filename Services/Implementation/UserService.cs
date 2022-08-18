@@ -116,5 +116,50 @@ namespace WebShopSeminar.Services.Implementation
             await userManager.DeleteAsync(user);
             return;
         }
+
+        public async Task<ApplicationUserViewModel> UpdateUser(UserAdminUpdateBinding model)
+        {
+            var dboUser = await db.Users
+                .Include(x => x.Address)
+                .FirstOrDefaultAsync(x => x.Id == model.Id);
+            var role = await db.Roles.FindAsync(model.RoleId);
+            if (dboUser == null || role == null)
+            {
+                return null;
+            }
+            await DeleteAllUserRoles(dboUser);
+            await userManager.AddToRoleAsync(dboUser, role.Name);
+            dboUser.Firstname = model.Firstname;
+            dboUser.Lastname = model.Lastname;
+            dboUser.DOB = model.DOB;
+            await db.SaveChangesAsync();
+            var response = mapper.Map<ApplicationUserViewModel>(dboUser);
+            return response;
+        }
+
+        private async Task DeleteAllUserRoles(ApplicationUser user)
+        {
+            var userRoles = await userManager.GetRolesAsync(user);
+            foreach (var item in userRoles)
+            {
+                await userManager.RemoveFromRoleAsync(user, item);
+            }
+        }
+
+        public async Task<ApplicationUserViewModel> GetUser(string id)
+        {
+            var dboUser = await db.Users
+                .Include(x => x.Address)
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            if (dboUser == null)
+            {
+                return null;
+            }
+
+            var response = mapper.Map<ApplicationUserViewModel>(dboUser);
+            response.Role = await GetUserRole(id);
+            return response;
+        }
     }
 }

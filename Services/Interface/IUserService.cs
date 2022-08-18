@@ -12,5 +12,7 @@ namespace WebShopSeminar.Services.Interface
         Task<List<UserRolesViewModel>> GetUserRoles();
         Task<ApplicationUserViewModel?> CreateUserAsync(UserAdminBinding model);
         Task DeleteUserAsync(string id);
+        Task<ApplicationUserViewModel> UpdateUser(UserAdminUpdateBinding model);
+        Task<ApplicationUserViewModel> GetUser(string id);
     }
 }

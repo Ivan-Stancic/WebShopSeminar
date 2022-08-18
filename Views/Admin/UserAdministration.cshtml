@@ -43,8 +43,8 @@
                 @Html.DisplayFor(modelItem => item.DOB)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Uredi", "EditUser", new { id=item.Id }) |
                 @Html.ActionLink("Obriši", "DeleteUser", new {  id=item.Id })
             </td>
         </tr>

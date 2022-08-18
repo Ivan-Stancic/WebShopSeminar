@@ -149,5 +149,19 @@ namespace WebShopSeminar.Controllers
             await userService.DeleteUserAsync(id);
             return RedirectToAction("UserAdministration");
         }
+
+        [HttpGet]
+        public async Task<IActionResult> EditUser(string id)
+        {
+            var user = await userService.GetUser(id);
+            return View(user);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditUser(UserAdminUpdateBinding model)
+        {
+            await userService.UpdateUser(model);
+            return RedirectToAction("UserAdministration");
+        }
     }
 }
