@@ -4,10 +4,10 @@
     ViewData["Title"] = "UserAdministration";
 }
 
-<h1>UserAdministration</h1>
+<h1>Administracija korisnika</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    @Html.ActionLink("Kreiraj korisnika", "CreateNewUser", new { /* id=item.PrimaryKey */ })
 </p>
 <table class="table">
     <thead>
@@ -45,7 +45,7 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Obriši", "DeleteUser", new {  id=item.Id })
             </td>
         </tr>
 }

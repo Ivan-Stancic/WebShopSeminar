@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using WebShopSeminar.Models.Binding;
 using WebShopSeminar.Models.Dbo;
 using WebShopSeminar.Models.ViewModel;
@@ -31,6 +32,7 @@ namespace WebShopSeminar.Mapping
             CreateMap<FileStorageViewModel, FileStorage>().
                 ForMember(dst => dst.Id, opts => opts.Ignore());
 
+            CreateMap<IdentityRole, UserRolesViewModel>();
             CreateMap<ApplicationUser, ApplicationUserViewModel>();
             CreateMap<UserBinding, ApplicationUser>()
                 .ForMember(dst => dst.UserName, opts => opts.MapFrom(src => src.Email));
