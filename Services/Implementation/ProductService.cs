@@ -171,5 +171,15 @@ namespace WebShopSeminar.Services.Implementation
             var dbo = await db.ShoppingCartItem.ToListAsync();
             return dbo.Select(x => mapper.Map<ShoppingCartItemViewModel>(x)).ToList();
         }
+
+        public async Task<List<ProductViewModel>> GetCategoryProductsAsync(int productCategoryId)
+        {
+            var products = await db.Product
+                .Include(x => x.ProductCategory)
+                .Where(x => x.ProductCategory.Id == productCategoryId)
+                .ToListAsync();
+
+            return products.Select(x => mapper.Map<ProductViewModel>(x)).ToList();
+        }
     }
 }

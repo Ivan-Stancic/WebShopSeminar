@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebShopSeminar.Data;
 
@@ -11,9 +12,10 @@ using WebShopSeminar.Data;
 namespace WebShopSeminar.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220819082257_probna")]
+    partial class probna
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,21 +54,21 @@ namespace WebShopSeminar.Data.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "c7d3d230-3198-4057-a0b7-f40ac2bf3b58",
+                            ConcurrencyStamp = "e282846b-a6d7-4164-886a-e461a1273eaa",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "22f95358-b575-4c27-89cf-46b5079fe0ac",
+                            ConcurrencyStamp = "94b154c2-33d3-493c-b2ac-812001162208",
                             Name = "BasicUser",
                             NormalizedName = "BASICUSER"
                         },
                         new
                         {
                             Id = "4",
-                            ConcurrencyStamp = "276993d0-cc9e-4b63-84a6-03ed15fe5aad",
+                            ConcurrencyStamp = "e3b31b5f-3155-412d-b2fe-1680bcaddcf8",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         });
@@ -303,7 +305,7 @@ namespace WebShopSeminar.Data.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "be4e75c9-98cf-48ea-b5ed-b22b91d5f528",
+                            ConcurrencyStamp = "041ad0e6-5264-4499-bb54-f3a24fde8d3a",
                             DOB = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
@@ -312,9 +314,9 @@ namespace WebShopSeminar.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJuT9dI7EDQi0A6RywW6ofsEnMv0DpktXKjHdu3e2WQKX3rJEKlM+LOxy7RFhC992A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAL7MScaQEfb54lqi3hWgw4VPa6nldJLbTsqPpwc+AwZY7AUTvd1/IsAhv+lole/zg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9fdebac6-2cd3-4a0b-8565-00055e1926ad",
+                            SecurityStamp = "593dcf23-9f22-4c51-9e56-0de6985918d9",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com"
                         },
@@ -322,7 +324,7 @@ namespace WebShopSeminar.Data.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d1d1aabe-a66f-4a87-8bb1-8a65d0418432",
+                            ConcurrencyStamp = "225ce3f9-50ba-47dd-be87-44a204b42860",
                             DOB = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "user@user.com",
                             EmailConfirmed = true,
@@ -331,9 +333,9 @@ namespace WebShopSeminar.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@USER.COM",
                             NormalizedUserName = "USER@USER.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAsvG86R7V+NzW4rQjNN5E//+FPDzv7fEwXwsJ2Dl/GD6R10K31lUe2P/2CfEIgB9g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECkkczlPiKwRcGPt3LTiCzUhdMbSC+dzbwB/4zoFG7eNABXPCElYzdY8Tk3muVLFNw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4c3f24f5-4032-4ee8-b435-b1779e7a0e2d",
+                            SecurityStamp = "cab89f56-6852-40dd-a2fb-f2375a5d2541",
                             TwoFactorEnabled = false,
                             UserName = "user@user.com"
                         });
@@ -404,173 +406,6 @@ namespace WebShopSeminar.Data.Migrations
                     b.HasIndex("ProductCategoryId");
 
                     b.ToTable("Product");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Izađite na balkone, pozdravite šampione!!! Dinamo!",
-                            Price = 250m,
-                            ProductCategoryId = 1,
-                            ProductImgUrl = "https://www.novilist.hr/wp-content/uploads/2021/04/balcony-200431_1280.jpg",
-                            Quantity = 1m,
-                            Title = "Balkon"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "pazi da te ne pljune",
-                            Price = 50m,
-                            ProductCategoryId = 2,
-                            ProductImgUrl = "https://image.dnevnik.hr/media/images/1600x1067/May2022/62305330-alpake.jpg",
-                            Quantity = 4m,
-                            Title = "Ljama"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Frankova kava , bar tako kažu",
-                            Price = 560m,
-                            ProductCategoryId = 3,
-                            ProductImgUrl = "https://www.tportal.hr/media/thumbnail/w1000/182058.jpeg",
-                            Quantity = 1m,
-                            Title = "Kava"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Jezero i planine",
-                            Price = 380m,
-                            ProductCategoryId = 4,
-                            ProductImgUrl = "https://magic-croatia.hr/wp-content/uploads/2021/05/boat-tour-zadar-telascica-nature-park-870x555.jpg",
-                            Quantity = 10m,
-                            Title = "Izlet"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "črnega vunčeka",
-                            Price = 5m,
-                            ProductCategoryId = 1,
-                            ProductImgUrl = "https://upload.wikimedia.org/wikipedia/hr/thumb/5/54/Vino.jpg/800px-Vino.jpg",
-                            Quantity = 250m,
-                            Title = "Vinčeko"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Jurilica",
-                            Price = 9999m,
-                            ProductCategoryId = 2,
-                            ProductImgUrl = "https://static.jutarnji.hr/images/slike/2022/01/08/23256043.jpg",
-                            Quantity = 1m,
-                            Title = "BMW"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Gorski kotar",
-                            Price = 5000m,
-                            ProductCategoryId = 3,
-                            ProductImgUrl = "https://zivotnimagazin.com/wp-content/uploads/2018/03/vikendica-iz-bajke-2.jpg",
-                            Quantity = 1m,
-                            Title = "Vikendica"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Scooter rave again",
-                            Price = 75m,
-                            ProductCategoryId = 4,
-                            ProductImgUrl = "https://i.ytimg.com/vi/jL083wMBMlM/maxresdefault.jpg",
-                            Quantity = 100m,
-                            Title = "Party"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Črni lapatop",
-                            Price = 15m,
-                            ProductCategoryId = 1,
-                            ProductImgUrl = "https://www.tportal.hr/media/thumbnail/w1000/1452357.jpeg",
-                            Quantity = 20m,
-                            Title = "Lapatop"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Krekeri uz čaj",
-                            Price = 2m,
-                            ProductCategoryId = 2,
-                            ProductImgUrl = "https://gospodarski.hr/wp-content/uploads/2019/04/Krekeri.jpg",
-                            Quantity = 25m,
-                            Title = "Krekeri"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Jedna i jedinstvena",
-                            Price = 2500m,
-                            ProductCategoryId = 3,
-                            ProductImgUrl = "https://www.backmarket.it/cdn-cgi/image/format=auto,quality=75,width=260/https://d1eh9yux7w8iql.cloudfront.net/product_images/1465986103.52.jpg",
-                            Quantity = 50m,
-                            Title = "Nokia 3310"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Smart kolica",
-                            Price = 100m,
-                            ProductCategoryId = 4,
-                            ProductImgUrl = "https://www.wobyhaus.co.rs/files/watermark/files/thumbs/files/images/slike_proizvoda/thumbs_1200/thumbs_w/70000301_1200_900px_w.jpg",
-                            Quantity = 1m,
-                            Title = "Kolica"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Vožnja balonom iznad Moslavine",
-                            Price = 85m,
-                            ProductCategoryId = 1,
-                            ProductImgUrl = "https://www.skole.hr/wp-content/uploads/2017/05/balloon-transport.jpg",
-                            Quantity = 7m,
-                            Title = "Balon"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Grunt u zagorju",
-                            Price = 78m,
-                            ProductCategoryId = 2,
-                            ProductImgUrl = "https://www.odvjetnik-strniscak.hr/wp-content/uploads/2020/11/Odvjetnik-za-zemlji%C5%A1te-2.jpg",
-                            Quantity = 1m,
-                            Title = "Grunt"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "Ikona",
-                            Price = 2m,
-                            ProductCategoryId = 3,
-                            ProductImgUrl = "https://www.purina.hr/sites/default/files/2017-11/the-big-outdoors.jpg",
-                            Quantity = 1m,
-                            Title = "Mačak maslačak"
-                        });
                 });
 
             modelBuilder.Entity("WebShopSeminar.Models.Dbo.ProductCategory", b =>

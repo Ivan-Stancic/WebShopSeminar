@@ -9,5 +9,7 @@ namespace WebShopSeminar.Models.Dbo
         public int Id { get; set; }
         public DateTime Created { get; set; }
         public ProductCategory ProductCategory { get; set; }
+        [ForeignKey("Product")]
+        public int ProductCategoryId { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebShopSeminar.Models;
 using WebShopSeminar.Models.Binding;
+using WebShopSeminar.Models.ViewModel;
 using WebShopSeminar.Services.Interface;
 
 namespace WebShopSeminar.Controllers
@@ -27,6 +28,17 @@ namespace WebShopSeminar.Controllers
         public IActionResult Category()
         {
             return View(productService.GetProductCategorysAsync().Result);
+        }
+
+        public async Task<IActionResult> CategoryDetails(int id)
+        {
+            ViewBag.ProductCategoryId = id;
+            var model = new CreateProductViewModel
+            {
+                Products = await productService.GetCategoryProductsAsync(id),
+                ProductToCategoryId = id
+            };
+            return View(model);
         }
 
         [Authorize]

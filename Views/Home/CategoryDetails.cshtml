@@ -1,0 +1,42 @@
+﻿@model WebShopSeminar.Models.ViewModel.CreateProductViewModel
+
+@{
+    ViewData["Title"] = "CategoryDetails";
+}
+
+<h1>CategoryDetails</h1>
+
+@using (Html.BeginForm())
+{
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Naziv</th>
+                <th scope="col">Opis</th>
+                <th scope="col">Kategorija</th>
+                <th scope="col"></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Products)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem=> item.ProductCategory.Title)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Details", "Home",new {id = item.Id})" class="btn btn-success">Details</a>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}

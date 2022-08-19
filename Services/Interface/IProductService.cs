@@ -17,5 +17,6 @@ namespace WebShopSeminar.Services.Interface
         Task<ProductCategoryViewModel> UpdateProductCategoryAsync(ProductCategoryUpdateBinding model);
         Task DeleteProductCategoryAsync(ProductCategory model);
         Task<ShoppingCartViewModel> AddShoppingCartAsync(ShoppingCartBinding model);
+        Task<List<ProductViewModel>> GetCategoryProductsAsync(int productCategoryId);
     }
 }

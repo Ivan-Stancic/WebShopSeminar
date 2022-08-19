@@ -1,0 +1,30 @@
+﻿@model List<WebShopSeminar.Models.ViewModel.ProductCategoryViewModel>
+
+@{
+    ViewData["Title"] = "Category";
+}
+
+<h1>Kategorije</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td> @Html.ActionLink("Prikaži proizvode","CategoryDetails","Home",new {id= item.Id},new {@class = "btn btn-primary"})</td>
+        </tr>
+}
+    </tbody>
+</table>
