@@ -1,0 +1,47 @@
+﻿@model WebShopSeminar.Models.ViewModel.ProductViewModel
+
+
+@using (Html.BeginForm())
+{
+    <input type="text" readonly hidden value="@Model.Id" name="ProductId">
+    <div>
+        <h4>Detalji proizvoda</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+            <dt class="col-sm-2">
+                Category
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model =>  model.ProductCategory.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Quantity)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Quantity)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+            <dd>
+                <img style="width: 450px; height: 300px" src="@Model.ProductImgUrl">
+            </dd>
+        </dl>
+        <a class="btn btn-primary" href="@Url.Action("CategoryDetails", "Home", new {id= Model.ProductCategory.Id})">Povratak</a>
+    </div>
+}

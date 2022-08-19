@@ -56,9 +56,10 @@ namespace WebShopSeminar.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> Details(int id)
         {
-            return View();
+            var product = await productService.GetProductAsync(id);
+            return View(product);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

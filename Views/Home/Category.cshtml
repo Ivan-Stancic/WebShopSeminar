@@ -15,16 +15,18 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td> @Html.ActionLink("Prikaži proizvode","CategoryDetails","Home",new {id= item.Id},new {@class = "btn btn-primary"})</td>
-        </tr>
-}
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td> @Html.ActionLink("Prikaži proizvode","CategoryDetails","Home",new {id= item.Id},new {@class = "btn btn-primary"})</td>
+            </tr>
+        }
     </tbody>
 </table>
+<a class="btn btn-primary" href="@Url.Action("Index", "Home")">Povratak</a>
+

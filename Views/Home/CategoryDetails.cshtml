@@ -4,7 +4,7 @@
     ViewData["Title"] = "CategoryDetails";
 }
 
-<h1>CategoryDetails</h1>
+<h1>Detalji kategorije</h1>
 
 @using (Html.BeginForm())
 {
@@ -14,8 +14,8 @@
                 <th scope="col">Naziv</th>
                 <th scope="col">Opis</th>
                 <th scope="col">Kategorija</th>
+                <th scope="col">Detalji</th>
                 <th scope="col"></th>
-
             </tr>
         </thead>
         <tbody>
@@ -32,11 +32,12 @@
                         @Html.DisplayFor(modelItem=> item.ProductCategory.Title)
                     </td>
                     <td>
-                        <a href="@Url.Action("Details", "Home",new {id = item.Id})" class="btn btn-success">Details</a>
+                        <a href="@Url.Action("Details", "Home",new {id = item.Id})" class="btn btn-primary">Detalji</a>
                     </td>
-
                 </tr>
             }
         </tbody>
     </table>
+    <a class="btn btn-primary" href="@Url.Action("Category", "Home")">Povratak</a>
+
 }
