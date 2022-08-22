@@ -37,6 +37,8 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IFileStorageService, FileStorageService>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+builder.Services.AddOpenApiDocument();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -53,6 +55,8 @@ else
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseSwaggerUi3();
+app.UseOpenApi();
 
 app.UseRouting();
 
