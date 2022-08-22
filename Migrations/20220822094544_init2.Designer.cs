@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebShopSeminar.Data;
 
@@ -11,9 +12,10 @@ using WebShopSeminar.Data;
 namespace WebShopSeminar.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220822094544_init2")]
+    partial class init2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,21 +54,21 @@ namespace WebShopSeminar.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "cf7df5b4-a388-401d-82f1-1ed2f54a135a",
+                            ConcurrencyStamp = "4150e0ff-f3f5-4ea6-96ad-c43692cebc5c",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "0bfeb7e6-56ad-41db-a83a-1d39f3df3635",
+                            ConcurrencyStamp = "06db757f-625b-4bb9-8996-08be4477fa1c",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         },
                         new
                         {
                             Id = "3",
-                            ConcurrencyStamp = "f755027e-c88d-4919-9681-70e73822bb72",
+                            ConcurrencyStamp = "cdee7e5e-6e95-46ea-99e9-9675eb406fab",
                             Name = "BasicUser",
                             NormalizedName = "BASICUSER"
                         });
@@ -169,7 +171,7 @@ namespace WebShopSeminar.Migrations
                         new
                         {
                             UserId = "2",
-                            RoleId = "3"
+                            RoleId = "2"
                         });
                 });
 
@@ -303,8 +305,8 @@ namespace WebShopSeminar.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8e1e150c-4d07-48a7-a58b-21bbd85ac8b6",
-                            DOB = new DateTime(2022, 8, 22, 11, 51, 6, 558, DateTimeKind.Local).AddTicks(6261),
+                            ConcurrencyStamp = "03bc7be8-1502-491d-a9f9-383c590dc428",
+                            DOB = new DateTime(2022, 8, 22, 11, 45, 43, 664, DateTimeKind.Local).AddTicks(2480),
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             Firstname = "Admin",
@@ -312,9 +314,9 @@ namespace WebShopSeminar.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEO7g1iODTgfZDdKLIGUS808itY2+O1Vaxlf8+W4nkzzH1CzMs9mNYJOJyAXo5qZgbw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEP26yfI09MZopd9vutPoz3LJS16RomAKJmWNQ8rL9uwgHhff2nTy/AuDgcCkHkTboQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6b669d0e-8a8c-4a1b-8009-446595df69ba",
+                            SecurityStamp = "097f3e8d-9f34-4ad9-b229-978067736140",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com"
                         },
@@ -322,8 +324,8 @@ namespace WebShopSeminar.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6e762c27-c5b7-4c53-bce8-54cc1277d6a4",
-                            DOB = new DateTime(2022, 8, 22, 11, 51, 6, 564, DateTimeKind.Local).AddTicks(7726),
+                            ConcurrencyStamp = "640e3f98-4203-4edf-8009-eb46168ad58d",
+                            DOB = new DateTime(2022, 8, 22, 11, 45, 43, 670, DateTimeKind.Local).AddTicks(4193),
                             Email = "user@user.com",
                             EmailConfirmed = true,
                             Firstname = "BasicUser",
@@ -331,9 +333,9 @@ namespace WebShopSeminar.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@USER.COM",
                             NormalizedUserName = "USER@USER.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGgQHqXkI76Oe12GSs3U/NOTUDqAXizdWdcuAikGeQ+RX8onyhnOsj4BEa99s7M1qA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDw+x8PrdzF+MBNS9a2BzUm1pQBSx1O7gx080WR9zLUk64hLB7aMDV62d5dG0ck6HQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b1ad45fc-6c81-46df-864b-09eb5ef639e3",
+                            SecurityStamp = "8af16470-0725-46b6-9c73-5ef426395dcc",
                             TwoFactorEnabled = false,
                             UserName = "user@user.com"
                         });

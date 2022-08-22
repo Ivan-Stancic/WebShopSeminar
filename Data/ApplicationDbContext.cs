@@ -118,7 +118,7 @@ namespace WebShopSeminar.Data
 
             new IdentityUserRole<string>
             {
-                RoleId = "2",
+                RoleId = "3",
                 UserId = "2"
             });
 

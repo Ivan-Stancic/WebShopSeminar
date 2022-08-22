@@ -24,7 +24,8 @@
             <th>
                 @Html.DisplayNameFor(model => model[0].DOB)
             </th>
-            <th></th>
+            <th scope="col">Uredi</th>
+            <th scope="col">Obriši</th>
         </tr>
     </thead>
     <tbody>
@@ -42,10 +43,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DOB)
             </td>
-            <td>
-                @Html.ActionLink("Uredi", "EditUser", new { id=item.Id }) |
-                @Html.ActionLink("Obriši", "DeleteUser", new {  id=item.Id })
-            </td>
+            <td>@Html.ActionLink("Uredi", "EditUser", "Admin", new {id = item.Id}, new{@class = "btn btn-primary"})</td>
+            <td>@Html.ActionLink("Obriši", "DeleteUser", "Admin", new {id = item.Id}, new{@class = "btn btn-danger"})</td>
         </tr>
 }
     </tbody>
