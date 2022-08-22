@@ -3,19 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebShopSeminar.Data;
 
 #nullable disable
 
-namespace WebShopSeminar.Data.Migrations
+namespace WebShopSeminar.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220802201825_init")]
-    partial class init
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,6 +47,29 @@ namespace WebShopSeminar.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            ConcurrencyStamp = "02023917-9b1f-46dc-a748-09227786c8b6",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            ConcurrencyStamp = "50b3d9b1-58c8-493a-b5ba-e4ccaef0e2ac",
+                            Name = "BasicUser",
+                            NormalizedName = "BASICUSER"
+                        },
+                        new
+                        {
+                            Id = "4",
+                            ConcurrencyStamp = "52ccd265-c1cf-4d29-80c1-1ab7e1a0e2b5",
+                            Name = "Editor",
+                            NormalizedName = "EDITOR"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -138,6 +159,18 @@ namespace WebShopSeminar.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "1",
+                            RoleId = "1"
+                        },
+                        new
+                        {
+                            UserId = "2",
+                            RoleId = "2"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -264,6 +297,74 @@ namespace WebShopSeminar.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "9cd34c55-c9b4-4ca1-8593-2b112628f3b3",
+                            DOB = new DateTime(2022, 8, 22, 8, 10, 46, 927, DateTimeKind.Local).AddTicks(3816),
+                            Email = "admin@admin.com",
+                            EmailConfirmed = true,
+                            Firstname = "Admin",
+                            Lastname = "Adminović",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@ADMIN.COM",
+                            NormalizedUserName = "ADMIN@ADMIN.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJ/xPFZukxm6xLm+dCZo31OdJFPH5t3LlP8voL9Pl/mc/wS8AcuF8i2vYtfLtQgvZw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "be1b302b-a864-439d-a9a8-234f57b8f672",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@admin.com"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "6014e51e-1778-440a-9de0-5f0eb1776e7d",
+                            DOB = new DateTime(2022, 8, 22, 8, 10, 46, 933, DateTimeKind.Local).AddTicks(7567),
+                            Email = "user@user.com",
+                            EmailConfirmed = true,
+                            Firstname = "BasicUser",
+                            Lastname = "Botić",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER@USER.COM",
+                            NormalizedUserName = "USER@USER.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBtv4qK0uDz2CUKlMpp7VXeyHuKBrYAj7RyKGrf+gc+gJabJN9MhtWJDEiY5WAp+Ww==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "1b25ee1b-a548-41fd-a136-166b807df627",
+                            TwoFactorEnabled = false,
+                            UserName = "user@user.com"
+                        });
+                });
+
+            modelBuilder.Entity("WebShopSeminar.Models.Dbo.FileStorage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DownloadUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FileExtension")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FileName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhysicalPath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FileStorage");
                 });
 
             modelBuilder.Entity("WebShopSeminar.Models.Dbo.Product", b =>
@@ -287,6 +388,9 @@ namespace WebShopSeminar.Data.Migrations
                     b.Property<int>("ProductCategoryId")
                         .HasColumnType("int");
 
+                    b.Property<string>("ProductImgUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("Quantity")
                         .HasColumnType("decimal(9,2)");
 
@@ -300,6 +404,184 @@ namespace WebShopSeminar.Data.Migrations
                     b.HasIndex("ProductCategoryId");
 
                     b.ToTable("Product");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Izađite na balkone, pozdravite šampione!!! Dinamo!",
+                            Price = 250m,
+                            ProductCategoryId = 1,
+                            ProductImgUrl = "https://www.novilist.hr/wp-content/uploads/2021/04/balcony-200431_1280.jpg",
+                            Quantity = 1m,
+                            Title = "Balkon"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "pazi da te ne pljune",
+                            Price = 50m,
+                            ProductCategoryId = 2,
+                            ProductImgUrl = "https://image.dnevnik.hr/media/images/1600x1067/May2022/62305330-alpake.jpg",
+                            Quantity = 4m,
+                            Title = "Ljama"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Frankova kava , bar tako kažu",
+                            Price = 560m,
+                            ProductCategoryId = 3,
+                            ProductImgUrl = "https://www.tportal.hr/media/thumbnail/w1000/182058.jpeg",
+                            Quantity = 1m,
+                            Title = "Kava"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Jezero i planine",
+                            Price = 380m,
+                            ProductCategoryId = 4,
+                            ProductImgUrl = "https://magic-croatia.hr/wp-content/uploads/2021/05/boat-tour-zadar-telascica-nature-park-870x555.jpg",
+                            Quantity = 10m,
+                            Title = "Izlet"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "črnega vunčeka",
+                            Price = 5m,
+                            ProductCategoryId = 1,
+                            ProductImgUrl = "https://upload.wikimedia.org/wikipedia/hr/thumb/5/54/Vino.jpg/800px-Vino.jpg",
+                            Quantity = 250m,
+                            Title = "Vinčeko"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Jurilica",
+                            Price = 9999m,
+                            ProductCategoryId = 2,
+                            ProductImgUrl = "https://static.jutarnji.hr/images/slike/2022/01/08/23256043.jpg",
+                            Quantity = 1m,
+                            Title = "BMW"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Gorski kotar",
+                            Price = 5000m,
+                            ProductCategoryId = 3,
+                            ProductImgUrl = "https://zivotnimagazin.com/wp-content/uploads/2018/03/vikendica-iz-bajke-2.jpg",
+                            Quantity = 1m,
+                            Title = "Vikendica"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Scooter rave again",
+                            Price = 75m,
+                            ProductCategoryId = 4,
+                            ProductImgUrl = "https://i.ytimg.com/vi/jL083wMBMlM/maxresdefault.jpg",
+                            Quantity = 100m,
+                            Title = "Party"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Črni lapatop",
+                            Price = 15m,
+                            ProductCategoryId = 1,
+                            ProductImgUrl = "https://www.tportal.hr/media/thumbnail/w1000/1452357.jpeg",
+                            Quantity = 20m,
+                            Title = "Lapatop"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Krekeri uz čaj",
+                            Price = 2m,
+                            ProductCategoryId = 2,
+                            ProductImgUrl = "https://gospodarski.hr/wp-content/uploads/2019/04/Krekeri.jpg",
+                            Quantity = 25m,
+                            Title = "Krekeri"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Jedna i jedinstvena",
+                            Price = 2500m,
+                            ProductCategoryId = 3,
+                            ProductImgUrl = "https://www.backmarket.it/cdn-cgi/image/format=auto,quality=75,width=260/https://d1eh9yux7w8iql.cloudfront.net/product_images/1465986103.52.jpg",
+                            Quantity = 50m,
+                            Title = "Nokia 3310"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Smart kolica",
+                            Price = 100m,
+                            ProductCategoryId = 4,
+                            ProductImgUrl = "https://www.wobyhaus.co.rs/files/watermark/files/thumbs/files/images/slike_proizvoda/thumbs_1200/thumbs_w/70000301_1200_900px_w.jpg",
+                            Quantity = 1m,
+                            Title = "Kolica"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Vožnja balonom iznad Moslavine",
+                            Price = 85m,
+                            ProductCategoryId = 1,
+                            ProductImgUrl = "https://www.skole.hr/wp-content/uploads/2017/05/balloon-transport.jpg",
+                            Quantity = 7m,
+                            Title = "Balon"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Grunt u zagorju",
+                            Price = 78m,
+                            ProductCategoryId = 2,
+                            ProductImgUrl = "https://www.odvjetnik-strniscak.hr/wp-content/uploads/2020/11/Odvjetnik-za-zemlji%C5%A1te-2.jpg",
+                            Quantity = 1m,
+                            Title = "Grunt"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Ikona",
+                            Price = 2m,
+                            ProductCategoryId = 3,
+                            ProductImgUrl = "https://www.purina.hr/sites/default/files/2017-11/the-big-outdoors.jpg",
+                            Quantity = 1m,
+                            Title = "Mačak maslačak"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "....",
+                            Price = 15m,
+                            ProductCategoryId = 4,
+                            ProductImgUrl = "https://i.factcool.com/cache2/410x615/catalog/products/14/86/6b/14-86-6b3e9651h5pkf4v2khq16ivbgq4s.jpg",
+                            Quantity = 10m,
+                            Title = "Bademantil"
+                        });
                 });
 
             modelBuilder.Entity("WebShopSeminar.Models.Dbo.ProductCategory", b =>
@@ -317,6 +599,9 @@ namespace WebShopSeminar.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -324,6 +609,40 @@ namespace WebShopSeminar.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProductCategory");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Sometimes this is dangerous! Sometimes this is rough! But one thing is true… We never get, we never get enough",
+                            ProductId = 0,
+                            Title = "Kategorija 1"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Yeah man Before success can manifest You got to go through the learning process Come... learn...",
+                            ProductId = 0,
+                            Title = "Kategorija 2"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "For sure I got my plan, don't really give a damn!",
+                            ProductId = 0,
+                            Title = "Kategorija 3"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "See the madness, watch the crowd, Fade the fear, without a doubt",
+                            ProductId = 0,
+                            Title = "Kategorija 4"
+                        });
                 });
 
             modelBuilder.Entity("WebShopSeminar.Models.Dbo.ShoppingCart", b =>
@@ -419,6 +738,9 @@ namespace WebShopSeminar.Data.Migrations
                     b.Property<int>("ProductCategoryId")
                         .HasColumnType("int");
 
+                    b.Property<string>("ProductImgUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("Quantity")
                         .HasColumnType("decimal(9,2)");
 
@@ -497,7 +819,7 @@ namespace WebShopSeminar.Data.Migrations
             modelBuilder.Entity("WebShopSeminar.Models.Dbo.Product", b =>
                 {
                     b.HasOne("WebShopSeminar.Models.Dbo.ProductCategory", "ProductCategory")
-                        .WithMany()
+                        .WithMany("Product")
                         .HasForeignKey("ProductCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -547,6 +869,11 @@ namespace WebShopSeminar.Data.Migrations
                     b.Navigation("Address");
 
                     b.Navigation("ShoppingCart");
+                });
+
+            modelBuilder.Entity("WebShopSeminar.Models.Dbo.ProductCategory", b =>
+                {
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("WebShopSeminar.Models.Dbo.ShoppingCart", b =>

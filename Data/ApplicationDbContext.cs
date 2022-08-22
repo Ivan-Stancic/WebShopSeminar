@@ -67,7 +67,7 @@ namespace WebShopSeminar.Data
         {
             base.OnModelCreating(builder);
 
-            #region Roles
+            // Role
 
             builder.Entity<IdentityRole>().HasData
             (
@@ -76,10 +76,8 @@ namespace WebShopSeminar.Data
                 new IdentityRole { Name = "Editor", NormalizedName = "EDITOR", Id = "4" }
             );
 
-            #endregion
 
-            #region Korisnici
-
+            //Korisnici
             var hasher = new PasswordHasher<ApplicationUser?>();
 
             builder.Entity<ApplicationUser>().HasData
@@ -95,6 +93,7 @@ namespace WebShopSeminar.Data
                     NormalizedEmail = "admin@admin.com".ToUpper(),
                     EmailConfirmed = true,
                     PasswordHash = hasher.HashPassword(null, "Password321"),
+                    DOB = DateTime.Now,
                 },
 
                 new ApplicationUser
@@ -107,7 +106,8 @@ namespace WebShopSeminar.Data
                     Email = "user@user.com",
                     NormalizedEmail = "user@user.com".ToUpper(),
                     EmailConfirmed = true,
-                    PasswordHash = hasher.HashPassword(null, "Password321")
+                    PasswordHash = hasher.HashPassword(null, "Password321"),
+                    DOB = DateTime.Now,
                 });
 
             builder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
@@ -116,16 +116,14 @@ namespace WebShopSeminar.Data
                 UserId = "1"
             },
 
-                new IdentityUserRole<string>
-                {
-                    RoleId = "2",
-                    UserId = "2"
-                });
+            new IdentityUserRole<string>
+            {
+                RoleId = "2",
+                UserId = "2"
+            });
 
-            #endregion
 
-            #region Katergorije
-
+            //Kategorije
             builder.Entity<ProductCategory>().HasData(
                 new ProductCategory
                 {
@@ -152,9 +150,7 @@ namespace WebShopSeminar.Data
                     Description = "See the madness, watch the crowd, Fade the fear, without a doubt"
                 });
 
-            #endregion
-
-            #region Products
+            //Proizvodi
             builder.Entity<Product>().HasData
             (
                 new Product
@@ -320,8 +316,19 @@ namespace WebShopSeminar.Data
                     Quantity = 1,
                     Price = 2,
                     ProductImgUrl = "https://www.purina.hr/sites/default/files/2017-11/the-big-outdoors.jpg"
-                });
-            #endregion
+                },
+
+                new Product
+                {
+                    Id = 16,
+                    Title = "Bademantil",
+                    Description = "....",
+                    ProductCategoryId = 4,
+                    Quantity = 10,
+                    Price = 15,
+                    ProductImgUrl = "https://i.factcool.com/cache2/410x615/catalog/products/14/86/6b/14-86-6b3e9651h5pkf4v2khq16ivbgq4s.jpg"
+                }
+                );
         }
 
         public DbSet<Address> Address { get; set; }
