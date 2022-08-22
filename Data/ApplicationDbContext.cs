@@ -72,8 +72,8 @@ namespace WebShopSeminar.Data
             builder.Entity<IdentityRole>().HasData
             (
                 new IdentityRole { Name = "Admin", NormalizedName = "ADMIN", Id = "1" },
-                new IdentityRole { Name = "BasicUser", NormalizedName = "BASICUSER", Id = "2" },
-                new IdentityRole { Name = "Editor", NormalizedName = "EDITOR", Id = "4" }
+                new IdentityRole { Name = "Editor", NormalizedName = "EDITOR", Id = "2" },
+                new IdentityRole { Name = "BasicUser", NormalizedName = "BASICUSER", Id = "3" }
             );
 
 

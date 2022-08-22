@@ -27,7 +27,7 @@ namespace WebShopSeminar.Controllers
         [HttpPost]
         public async Task<IActionResult> Registration(UserBinding model)
         {
-            var result = await userService.CreateUserAsync(model, Roles.BasicUser);
+            var result = await userService.CreateUserAsync(model, "BasicUser");
             if (result != null)
             {
                 await signInManager.SignInAsync(result, true);
