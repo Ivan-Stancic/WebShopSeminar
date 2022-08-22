@@ -12,8 +12,8 @@ using WebShopSeminar.Data;
 namespace WebShopSeminar.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220822095107_init3")]
-    partial class init3
+    [Migration("20220822154018_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -54,21 +54,21 @@ namespace WebShopSeminar.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "cf7df5b4-a388-401d-82f1-1ed2f54a135a",
+                            ConcurrencyStamp = "1d5d9f21-b0c0-48ae-8bb7-ec7c5212889e",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "0bfeb7e6-56ad-41db-a83a-1d39f3df3635",
+                            ConcurrencyStamp = "e20c6900-2fd3-47ad-9c19-1dda9d076af1",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         },
                         new
                         {
                             Id = "3",
-                            ConcurrencyStamp = "f755027e-c88d-4919-9681-70e73822bb72",
+                            ConcurrencyStamp = "f5f7156c-b619-41e0-8893-09584418709d",
                             Name = "BasicUser",
                             NormalizedName = "BASICUSER"
                         });
@@ -305,8 +305,8 @@ namespace WebShopSeminar.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8e1e150c-4d07-48a7-a58b-21bbd85ac8b6",
-                            DOB = new DateTime(2022, 8, 22, 11, 51, 6, 558, DateTimeKind.Local).AddTicks(6261),
+                            ConcurrencyStamp = "023a3cfa-624f-4e5c-8f36-f6645fd4d8b7",
+                            DOB = new DateTime(2022, 8, 22, 17, 40, 18, 530, DateTimeKind.Local).AddTicks(3768),
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             Firstname = "Admin",
@@ -314,9 +314,9 @@ namespace WebShopSeminar.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEO7g1iODTgfZDdKLIGUS808itY2+O1Vaxlf8+W4nkzzH1CzMs9mNYJOJyAXo5qZgbw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEODoJTWLrIEwduj9+j5UvxLXxeXJpuguhRqjftYXXjUNsIsAyy2TIqHepEO3E7RdQA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6b669d0e-8a8c-4a1b-8009-446595df69ba",
+                            SecurityStamp = "612d3e3f-f30e-4ee9-8d91-f2c674869b9a",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com"
                         },
@@ -324,8 +324,8 @@ namespace WebShopSeminar.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6e762c27-c5b7-4c53-bce8-54cc1277d6a4",
-                            DOB = new DateTime(2022, 8, 22, 11, 51, 6, 564, DateTimeKind.Local).AddTicks(7726),
+                            ConcurrencyStamp = "77a3934f-6b4d-4bdb-b6e3-4bb0833d1010",
+                            DOB = new DateTime(2022, 8, 22, 17, 40, 18, 531, DateTimeKind.Local).AddTicks(6038),
                             Email = "user@user.com",
                             EmailConfirmed = true,
                             Firstname = "BasicUser",
@@ -333,9 +333,9 @@ namespace WebShopSeminar.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@USER.COM",
                             NormalizedUserName = "USER@USER.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGgQHqXkI76Oe12GSs3U/NOTUDqAXizdWdcuAikGeQ+RX8onyhnOsj4BEa99s7M1qA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBsXzcx1t5CAtlebIvc6A8deJF/paM5yZogTAdWdjdmjK/vHtydvIOYp+nYoZnyx0g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b1ad45fc-6c81-46df-864b-09eb5ef639e3",
+                            SecurityStamp = "7a5d59da-1852-4ba5-ae5c-31213c8437de",
                             TwoFactorEnabled = false,
                             UserName = "user@user.com"
                         });

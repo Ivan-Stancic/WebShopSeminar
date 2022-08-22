@@ -327,9 +327,9 @@ namespace WebShopSeminar.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "1", "02023917-9b1f-46dc-a748-09227786c8b6", "Admin", "ADMIN" },
-                    { "2", "50b3d9b1-58c8-493a-b5ba-e4ccaef0e2ac", "BasicUser", "BASICUSER" },
-                    { "4", "52ccd265-c1cf-4d29-80c1-1ab7e1a0e2b5", "Editor", "EDITOR" }
+                    { "1", "1d5d9f21-b0c0-48ae-8bb7-ec7c5212889e", "Admin", "ADMIN" },
+                    { "2", "e20c6900-2fd3-47ad-9c19-1dda9d076af1", "Editor", "EDITOR" },
+                    { "3", "f5f7156c-b619-41e0-8893-09584418709d", "BasicUser", "BASICUSER" }
                 });
 
             migrationBuilder.InsertData(
@@ -337,8 +337,8 @@ namespace WebShopSeminar.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "DOB", "Email", "EmailConfirmed", "Firstname", "Lastname", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "1", 0, "9cd34c55-c9b4-4ca1-8593-2b112628f3b3", new DateTime(2022, 8, 22, 8, 10, 46, 927, DateTimeKind.Local).AddTicks(3816), "admin@admin.com", true, "Admin", "Adminović", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEJ/xPFZukxm6xLm+dCZo31OdJFPH5t3LlP8voL9Pl/mc/wS8AcuF8i2vYtfLtQgvZw==", null, false, "be1b302b-a864-439d-a9a8-234f57b8f672", false, "admin@admin.com" },
-                    { "2", 0, "6014e51e-1778-440a-9de0-5f0eb1776e7d", new DateTime(2022, 8, 22, 8, 10, 46, 933, DateTimeKind.Local).AddTicks(7567), "user@user.com", true, "BasicUser", "Botić", false, null, "USER@USER.COM", "USER@USER.COM", "AQAAAAEAACcQAAAAEBtv4qK0uDz2CUKlMpp7VXeyHuKBrYAj7RyKGrf+gc+gJabJN9MhtWJDEiY5WAp+Ww==", null, false, "1b25ee1b-a548-41fd-a136-166b807df627", false, "user@user.com" }
+                    { "1", 0, "023a3cfa-624f-4e5c-8f36-f6645fd4d8b7", new DateTime(2022, 8, 22, 17, 40, 18, 530, DateTimeKind.Local).AddTicks(3768), "admin@admin.com", true, "Admin", "Adminović", false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEODoJTWLrIEwduj9+j5UvxLXxeXJpuguhRqjftYXXjUNsIsAyy2TIqHepEO3E7RdQA==", null, false, "612d3e3f-f30e-4ee9-8d91-f2c674869b9a", false, "admin@admin.com" },
+                    { "2", 0, "77a3934f-6b4d-4bdb-b6e3-4bb0833d1010", new DateTime(2022, 8, 22, 17, 40, 18, 531, DateTimeKind.Local).AddTicks(6038), "user@user.com", true, "BasicUser", "Botić", false, null, "USER@USER.COM", "USER@USER.COM", "AQAAAAEAACcQAAAAEBsXzcx1t5CAtlebIvc6A8deJF/paM5yZogTAdWdjdmjK/vHtydvIOYp+nYoZnyx0g==", null, false, "7a5d59da-1852-4ba5-ae5c-31213c8437de", false, "user@user.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -358,7 +358,7 @@ namespace WebShopSeminar.Migrations
                 values: new object[,]
                 {
                     { "1", "1" },
-                    { "2", "2" }
+                    { "3", "2" }
                 });
 
             migrationBuilder.InsertData(
